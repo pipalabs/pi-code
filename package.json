@@ -8,7 +8,9 @@
   "files": [
     "extensions/pipa/**/*",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "PROFILE.md",
+    "setup-profile.js"
   ],
   "keywords": [
     "pi-package",
@@ -16,7 +18,8 @@
   ],
   "pi": {
     "extensions": [
-      "./index.js"
+      "./index.js",
+      "./setup-profile.js"
     ],
     "skills": [
       "./skills"
