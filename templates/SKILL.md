@@ -36,19 +36,15 @@ description: Breve descrição detalhando quando acionar esta skill.
 
 ## Fluxo Visual (Recomendado)
 
-```mermaid
+\```mermaid
 graph TD
-  Start --> A[Fase 1]
-  A --> User([Aprovação Humana])
-  User --> B[Fase 2]
-```
-````
+Start --> A[Fase 1]
+A --> User([Aprovação Humana])
+User --> B[Fase 2]
+\```
 
 ## Exemplos
 
 - **Input esperado:** Exemplo de entrada.
 - **Output esperado:** Exemplo de saída e formato.
-
-```
-
-```
+````
