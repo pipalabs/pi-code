@@ -16,7 +16,7 @@ Adicione o pacote nas configurações do seu Pi (`settings.json` ou `package.jso
 
 ## 🚀 Como Funciona
 
-Ao ser carregado, o pacote executa um setup (`setup-profile.js`) que configura o ambiente local (`.pi/`) com as regras de domínio exclusivas para a área de Engenharia e traz um Squad de Desenvolvimento maduro e pronto para atuar.
+Ao ser carregado, a arquitetura base da Pipa (Pipa Core) detecta este pacote e configura o ambiente local (`.pi/`) com as regras de domínio exclusivas para a área de Engenharia e traz um Squad de Desenvolvimento maduro e pronto para atuar.
 
 ### 👑 A Liderança (Engenheira Chefe)
 
