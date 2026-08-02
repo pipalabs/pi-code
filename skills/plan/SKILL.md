@@ -11,7 +11,7 @@ Para orquestrar esta skill, você deve acionar a **Tech Lead (Stephanie)** logo 
 
 **Antes de qualquer ação, consulte `code/PROJECT-REFERENCE.md` para conhecer hooks, componentes e padrões disponíveis — isso evita reimplementar o que já existe.**
 
-Nota: se for fornecido um código de tarefa como argumento, busque os dados iniciais usando o comando `just backlog-list --limit 1 code=<código>` e trate a saída como o conteúdo de `NOVA-TAREFA.<nome-da-tarefa>.md` para iniciar o fluxo.
+Nota: se for fornecido um código de tarefa como argumento, busque os dados iniciais usando a tool `backlog` com a action `select` (ex: `backlog` com `action: "select"` e `query: "<código>"`) e trate a saída como o conteúdo de `NOVA-TAREFA.<nome-da-tarefa>.md` para iniciar o fluxo.
 
 ### 0. Setup de Ambiente (Antes de qualquer planejamento)
 

@@ -45,7 +45,7 @@ Para executar esta skill com sucesso:
 7.  **Atualização do Backlog Local:**
     - Leia o arquivo `NOVA-TAREFA.*.md`.
     - Crie um resumo enxuto e de alto nível da implementação, escrito de forma a ser compreensível tanto para desenvolvedores quanto para PMs não técnicos.
-    - Atualize o arquivo `TASK.md` correspondente no backlog local utilizando o script `scripts/update-task` (ou editando o arquivo manualmente), alterando o status para `done` e inserindo esse resumo para documentar o que foi efetivamente entregue.
+    - Atualize o item correspondente no backlog local utilizando a tool `backlog` com as actions `update-frontmatter` (alterando o campo `status` para `done`) e `update-body` (inserindo esse resumo, `mode: "append"`), para documentar o que foi efetivamente entregue. Não edite `backlog.json` diretamente — use exclusivamente a tool `backlog`.
 
 8.  **Atualização de Documentação Local (FINALIZAÇÃO):**
     - Analise a implementação realizada e identifique quais partes da documentação em `.context/project/product/` são afetadas.
