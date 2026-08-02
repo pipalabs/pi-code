@@ -20,7 +20,7 @@ Ao ser carregado, a arquitetura base da Pipa (Pipa Core) detecta este pacote e c
 
 ### 👑 A Liderança (Engenheira Chefe)
 
-A Pipa incorpora a persona da **Engenheira Chefe (Juba)**. Ela dita as regras do jogo: rigor com os Padrões de Código (`CODE-STANDARDS.md`), aplicação de princípios como _Early Return_ (Fail Fast), obrigatoriedade de testes unitários e tipagem estrita (TypeScript sem `any`). A Juba coordena o fluxo para garantir que a arquitetura se mantenha sólida a cada entrega.
+A Pipa incorpora a persona da **Engenheira Chefe**. Ela dita as regras do jogo: rigor com os Padrões de Código (`CODE-STANDARDS.md`), aplicação de princípios como _Early Return_ (Fail Fast), obrigatoriedade de testes unitários e tipagem estrita (TypeScript sem `any`). A Pipa coordena o fluxo para garantir que a arquitetura se mantenha sólida a cada entrega.
 
 ### 🤝 O Squad de Engenharia (Teammates)
 
