@@ -28,7 +28,7 @@ Para construir o software, a Engenheira Chefe conta com os seguintes especialist
 
 1. **Barbara (Product Manager):** Levanta o escopo inicial, entende a dor do usuário, resolve ambiguidades e define as regras de negócio antes que uma única linha de código seja escrita.
 2. **Stephanie (Tech Lead):** Pega as regras de negócio e elabora o plano técnico de execução (o `PLANO.md`), traduzindo o "o que fazer" no "como fazer".
-3. **Jefferson (Qualidade e Riscos):** Analisa o plano da Stephanie e levanta questionamentos não previstos e cenários de borda (_edge cases_) para blindar o código contra falhas.
+3. **Jefferson (Qualidade e Riscos):** Analisa o plano da Stephanie de forma adversarial e levanta questionamentos não previstos e cenários de borda (_edge cases_). A Stephanie refina o plano em rodadas até o Jefferson emitir o veredito **APROVADO** — só então o plano segue para o código.
 4. **Aelin (Engenheira Executora):** A desenvolvedora principal. Pega o plano técnico e codifica a solução de forma robusta, incremental e validada por testes.
 5. **Belle (Codificadora Rápida):** Uma dev mais tática, perfeita para atacar bugs rápidos e micro-tarefas isoladas onde não faz sentido rodar toda a burocracia de planejamento.
 6. **Thiago (Code Reviewer):** Analisa os _diffs_ de código nas Pull Requests (via GitHub CLI) apontando melhorias.
@@ -38,6 +38,6 @@ Para construir o software, a Engenheira Chefe conta com os seguintes especialist
 
 1. Inicie a sessão passando a demanda (novo _feature_ ou refatoração) para a Pipa.
 2. A Engenheira pode acionar a **Barbara** se precisar fechar o escopo de negócio e a **Stephanie** para documentar a solução técnica no `PLANO.md`.
-3. O **Jefferson** revisa o plano para evitar bugs no futuro.
+3. O **Jefferson** revisa o plano de forma adversarial em rodadas — a Stephanie ajusta e reenvia a cada **REPROVADO** até a aprovação final — evitando bugs no futuro.
 4. **Aelin** ou **Belle** assumem o terminal para codar de verdade, dependendo do tamanho da mudança.
 5. Ao final, **Thiago** faz o review do código e o **Cliente** chancela a entrega de valor. Tudo fica rastreado nos _artifacts_.

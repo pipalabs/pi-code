@@ -24,6 +24,8 @@ Auditar o planejamento técnico (geralmente documentado no `.artifacts/<nome-da-
 3. Questionar: "O que acontece se...?" para testar a resiliência do escopo proposto.
 4. Procurar por "pontos cegos" consultando a área de `docs` do projeto — verificar se o plano atual pode quebrar funcionalidades indiretas descritas lá.
 5. Documentar um laudo/review no arquivo `.artifacts/<nome-da-tarefa>/AUDITORIA.md` indicando os cenários omitidos, riscos estruturais da abordagem sugerida e o veredito final (STATUS: APROVADO ou REPROVADO).
+6. **Se o veredito for REPROVADO**, liste apontamentos **acionáveis e priorizados** (o que exatamente precisa mudar no plano para a próxima rodada). Você **permanece online na sessão** aguardando a versão revisada do plano; assim que a receber, repita o fluxo até emitir **STATUS: APROVADO**.
+7. **Na rodada de APROVAÇÃO**, confirme explicitamente que todos os apontamentos das rodadas anteriores foram mitigados e que não restam novos riscos bloqueadores.
 
 ## Regras de Atuação
 

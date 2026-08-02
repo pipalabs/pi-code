@@ -46,17 +46,21 @@ Com o escopo da Barbara alinhado, passe o trabalho de engenharia para a Tech Lea
 - **Ação V1:** Instrua a Stephanie a apresentar no mínimo 2 opções de solução (V1 - Visão Geral).
 - **Interação:** Exiba as propostas para o usuário e pergunte _"Qual opção técnica você deseja seguir?"_, depois **aguarde a decisão**.
 
-### 3. V2, V3 e Auditoria de Riscos (Delegação: Agente Jefferson)
+### 3. V2, V3 e Loop de Revisão Adversarial (Delegação: Agente Jefferson)
 
 Com a opção escolhida pelo usuário:
 
 - A **`stephanie`** fechará o passo a passo (V2) e especificações/contratos (V3).
-- ANTES de aprovar o passo a passo como definitivo para o desenvolvimento, a **`stephanie`** deve invocar o **`jefferson`** via **teammates** para que este analise criticamente a V2/V3 gerada. Ele procurará por cenários "unhappy path", falhas de arquitetura e edge cases.
-- Repasse as pontuações e riscos levantados pelo `jefferson` para que a `stephanie` fortaleça e atualize as seções no `PLANO.md`.
+- ANTES de aprovar o passo a passo como definitivo para o desenvolvimento, a **`stephanie`** deve invocar o **`jefferson`** via **teammates** para uma **revisão adversarial** da V2/V3 gerada. Ele procurará por cenários "unhappy path", falhas de arquitetura e edge cases, e registrará o laudo em `.artifacts/<nome-da-tarefa>/AUDITORIA.md` com veredito explícito: **STATUS: APROVADO** ou **STATUS: REPROVADO**.
+- **Loop obrigatório até aprovação:**
+  1. A `stephanie` envia a versão atual do `PLANO.md` ao `jefferson` para revisão adversarial.
+  2. Se o veredito for **REPROVADO**, a `stephanie` DEVE corrigir/fortalecer **todas** as pontuações listadas no `AUDITORIA.md`, atualizar o `PLANO.md` e **re-enviar a nova versão ao `jefferson` para uma nova rodada de revisão** (voltar ao passo 1).
+  3. O ciclo se repete — sem limite de rodadas — até que o `jefferson` emita **STATUS: APROVADO**.
+- **Uma rodada de ajustes NÃO basta.** A `stephanie` não pode declarar o plano pronto por conta própria; o plano só é considerado concluído quando a última versão auditada tiver veredito **APROVADO**.
 
 ### 4. Apresentação e Aprovação do Plano (Usuário)
 
-Com o `PLANO.md` (V3) auditado pelo Jefferson e refinado pela Stephanie:
+Com o `PLANO.md` (V3) **aprovado pelo Jefferson** (veredito **STATUS: APROVADO** na última rodada do loop adversarial):
 
 1. **Apresente o plano completo ao usuário** — exiba o sumário executivo do `PLANO.md`: objetivo, arquitetura escolhida, fases, contratos e riscos mitigados.
 2. **Pare e aguarde aprovação explícita.** Pergunte: _"O plano está aprovado? Posso iniciar a implementação?"_
@@ -87,9 +91,9 @@ graph TD
     Stephanie -->|Opções V1| User
     User -->|Escolhe Opção| Stephanie
     Stephanie -->|Cria V2 e V3| Jefferson[3. QA/Riscos: Jefferson]
-    Jefferson -->|Levanta Riscos| Stephanie
-    Stephanie -.->|Refina Plano| Jefferson
-    Jefferson -->|Plano Auditado| User
+    Jefferson -->|STATUS: REPROVADO| Stephanie
+    Stephanie -.->|Refina Plano e Re-envia| Jefferson
+    Jefferson -->|STATUS: APROVADO| User
     User -->|Aprovação Explícita| Aelin[4. Aprovação]
     Aelin -->|De Acordo| Exec[5. Execução: Aelin]
 ```
@@ -98,6 +102,7 @@ graph TD
 
 - **Jamais atropele os agentes**: deixe que a Barbara levante as dúvidas, que a Stephanie faça as propostas e que o Jefferson critique. Você é o orquestrador que chama esses especialistas e serve de interface com o usuário.
 - **Não tome decisões sozinho**: toda tomada de decisão estrutural de produto, arquitetura ou resolução de Edge Cases apontados deve passar pelo escopo da equipe e ser aprovada pelo usuário.
+- **Loop adversarial até o fim**: a revisão do Jefferson não é um evento único. Toda vez que ele emitir **REPROVADO**, o plano volta para a Stephanie refinar e re-enviar para nova revisão. O plano só avança para o usuário com **STATUS: APROVADO** explícito na última rodada.
 
 ## Examples
 
