@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Planeja uma tarefa orquestrando a equipe de agentes (Barbara, Stephanie, Jefferson) na construção do PLANO.md evolutivo (Setup -> V1 -> V2 -> V3) a partir da NOVA-TAREFA.*.md. Inclui etapa de setup de worktree/branch e integra backlog local com contexto do projeto.
+description: Planeja uma tarefa orquestrando a equipe de agentes (Barbara, Stephanie, Jefferson) na construção do PLANO.md evolutivo (Setup -> V1 -> V2 -> V3) a partir da NOVA-TAREFA.*.md. Inclui etapa de limpeza de terreno (colegas/tasks de fases anteriores), setup de worktree/branch e integra backlog local com contexto do projeto.
 ---
 
 # Planejar Tarefa
@@ -13,7 +13,23 @@ Para orquestrar esta skill, você deve acionar a **Tech Lead (Stephanie)** logo 
 
 Nota: se for fornecido um código de tarefa como argumento, busque os dados iniciais usando a tool `backlog` com a action `select` (ex: `backlog` com `action: "select"` e `query: "<código>"`) e trate a saída como o conteúdo de `NOVA-TAREFA.<nome-da-tarefa>.md` para iniciar o fluxo.
 
-### 0. Setup de Ambiente (Antes de qualquer planejamento)
+### 0. Limpeza de Terreno (Antes de qualquer planejamento)
+
+Antes de planejar, elimine o estado herdado de fases anteriores para reduzir ruído de contexto e evitar invocar colegas obsoletos:
+
+1. **Keep-list desta fase (MANTENHA):** `stephanie` (Tech Lead), `barbara` (PM), `jefferson` (QA). **DISPENSE:** `aelin`, `belle`, `thiago`, `cliente`.
+2. **Procedimento de limpeza:**
+   - Rode `teammates` com `action: "online"` e liste os colegas ativos.
+   - Para cada colega online que **NÃO** esteja na keep-list, rode `teammates` com `action: "dismiss"` e `teammateId: "<id>"`.
+   - Rode `task` com `action: "list"` e identifique tasks de outras fases (execução/finalização).
+   - Para cada task de **outra fase** (status `completed` ou `pending` sem dono), rode `task` com `action: "remove"` e `id: "<id>"`.
+3. **Regras de segurança:**
+   - NUNCA remova tasks da fase corrente (escopo/plano/auditoria).
+   - NUNCA use `force: true` em `task remove` sem aprovação explícita do usuário.
+   - NUNCA dispense um colega que esteja executando a fase corrente.
+4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de planejamento.
+
+### 0.1 Setup de Ambiente (Após limpeza de terreno)
 
 Antes de iniciar a definição de escopo, prepare o ambiente isolado de desenvolvimento:
 
@@ -82,7 +98,8 @@ Apesar da delegação ocorrer autonomamente entre os subagentes, o avanço entre
 
 ```mermaid
 graph TD
-    Start([Início / NOVA-TAREFA]) --> Setup[0. Setup: Worktree]
+    Start([Início / NOVA-TAREFA]) --> Limpeza[0. Limpeza de Terreno]
+    Limpeza --> Setup[0.1 Setup: Worktree]
     Setup --> Orquestrador[Orquestrador]
     Orquestrador --> Barbara[1. PM: Barbara]
     Barbara -->|Ambiguidades?| User([Usuário])

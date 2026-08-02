@@ -1,6 +1,6 @@
 ---
 name: execute
-description: Inicia e orquestra a execução técnica de uma tarefa já planejada. Delega a codificação para a agente Aelin, garantindo que o plano aprovado seja implementado de forma incremental e validada.
+description: Limpa o terreno (colegas/tasks de fases anteriores) e inicia a execução técnica de uma tarefa já planejada, delegando a codificação para a agente Aelin e garantindo que o plano aprovado seja implementado de forma incremental e validada.
 ---
 
 # Executar Tarefa
@@ -12,6 +12,22 @@ Para orquestrar esta skill, invoque a **Engenheira de Software (Aelin)**. Sua fu
 Para executar esta skill com sucesso:
 
 **Antes de qualquer ação, consulte `code/PROJECT-REFERENCE.md` para conhecer hooks, componentes e padrões disponíveis — isso evita reimplementar o que já existe.**
+
+### 0. Limpeza de Terreno (Antes de qualquer ação)
+
+Antes de iniciar a execução, elimine o estado herdado de fases anteriores para reduzir ruído de contexto e evitar invocar colegas obsoletos:
+
+1. **Keep-list desta fase (MANTENHA):** `aelin` (Engenheira), `belle` (Legião) e `cliente` (UAT). **DISPENSE:** `barbara`, `jefferson`, `stephanie` (planejamento) e `thiago` (a `aelin` o invoca sob demanda se precisar de code review).
+2. **Procedimento de limpeza:**
+   - Rode `teammates` com `action: "online"` e liste os colegas ativos.
+   - Para cada colega online que **NÃO** esteja na keep-list, rode `teammates` com `action: "dismiss"` e `teammateId: "<id>"`.
+   - Rode `task` com `action: "list"` e identifique tasks de outras fases (planejamento/finalização).
+   - Para cada task de **outra fase** (status `completed` ou `pending` sem dono), rode `task` com `action: "remove"` e `id: "<id>"`.
+3. **Regras de segurança:**
+   - NUNCA remova tasks da fase corrente (subtasks de codificação).
+   - NUNCA use `force: true` em `task remove` sem aprovação explícita do usuário.
+   - NUNCA dispense a `aelin` se ela já estiver executando a fase corrente.
+4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de execução.
 
 ### 1. Validação de Pré-requisitos
 

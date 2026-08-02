@@ -1,6 +1,6 @@
 ---
 name: finish
-description: Finaliza o ciclo de vida de uma tarefa, consolidando as mudanças em uma Pull Request, realizando o merge, atualizando o backlog local e a documentação local.
+description: Limpa o terreno (colegas/tasks de fases anteriores) e finaliza o ciclo de vida de uma tarefa, consolidando as mudanças em uma Pull Request, realizando o merge, atualizando o backlog local e a documentação local.
 ---
 
 # Finish Task
@@ -10,6 +10,22 @@ description: Finaliza o ciclo de vida de uma tarefa, consolidando as mudanças e
 Atue como a **Tech Lead (Stephanie)**. Sua função é encerrar a implementação de uma tarefa, consolidando as mudanças em uma Pull Request profissional e garantindo que todas as fontes de verdade (GitHub, Backlog Local e Documentação Local) estejam sincronizadas.
 
 Para executar esta skill com sucesso:
+
+### 0. Limpeza de Terreno (Antes de qualquer ação)
+
+Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ruído de contexto e evitar invocar colegas obsoletos:
+
+1. **Keep-list desta fase (MANTENHA):** `stephanie` (Tech Lead) e `thiago` (Revisor de PR). **DISPENSE:** `barbara`, `jefferson` (planejamento) e `aelin`, `belle`, `cliente` (execução).
+2. **Procedimento de limpeza:**
+   - Rode `teammates` com `action: "online"` e liste os colegas ativos.
+   - Para cada colega online que **NÃO** esteja na keep-list, rode `teammates` com `action: "dismiss"` e `teammateId: "<id>"`.
+   - Rode `task` com `action: "list"` e identifique tasks de outras fases (planejamento/execução).
+   - Para cada task de **outra fase** (status `completed` ou `pending` sem dono), rode `task` com `action: "remove"` e `id: "<id>"`.
+3. **Regras de segurança:**
+   - NUNCA remova tasks da fase corrente (PR/revisão/finalização).
+   - NUNCA use `force: true` em `task remove` sem aprovação explícita do usuário.
+   - NUNCA dispense `thiago` durante a revisão da PR da fase corrente.
+4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de finalização.
 
 1.  **Coletar Metadados da Tarefa:**
     - Leia `PLANO.md` e `NOVA-TAREFA.*.md` para extrair o código da tarefa (ex: "JUBA-41") e o título original da tarefa.
