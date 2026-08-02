@@ -29,7 +29,7 @@ Antes de planejar, elimine o estado herdado de fases anteriores para reduzir ru�
    - NUNCA dispense um colega que esteja executando a fase corrente.
 4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de planejamento.
 
-### 0.1 Setup de Ambiente (Após limpeza de terreno)
+### 1. Setup de Ambiente (Após limpeza de terreno)
 
 Antes de iniciar a definição de escopo, prepare o ambiente isolado de desenvolvimento:
 
@@ -46,14 +46,14 @@ Antes de iniciar a definição de escopo, prepare o ambiente isolado de desenvol
 
 > O setup é executado automaticamente como fase inicial do plano, eliminando a necessidade de uma skill separada.
 
-### 1. Definição de Escopo (Delegação: Agente Barbara)
+### 2. Definição de Escopo (Delegação: Agente Barbara)
 
 A primeira etapa é isolar ambiguidades e extrair todas as regras de negócio de `NOVA-TAREFA.*.md` e do repositório de documentos `.context/project/product/`.
 
 - A **`barbara`** deve ser invocada pela Tech Lead via **teammates** para explorar os requisitos, cruzar com a base de conhecimento e gerar o "Relatório de Execução Segura".
 - **Interação:** Se a Barbara encontrar ambiguidades, apresente as dúvidas geradas por ela ao usuário e **aguarde as respostas** antes de avançar.
 
-### 2. Planejamento Arquitetural (Delegação: Agente Stephanie)
+### 3. Planejamento Arquitetural (Delegação: Agente Stephanie)
 
 Com o escopo da Barbara alinhado, passe o trabalho de engenharia para a Tech Lead.
 
@@ -62,7 +62,7 @@ Com o escopo da Barbara alinhado, passe o trabalho de engenharia para a Tech Lea
 - **Ação V1:** Instrua a Stephanie a apresentar no mínimo 2 opções de solução (V1 - Visão Geral).
 - **Interação:** Exiba as propostas para o usuário e pergunte _"Qual opção técnica você deseja seguir?"_, depois **aguarde a decisão**.
 
-### 3. V2, V3 e Loop de Revisão Adversarial (Delegação: Agente Jefferson)
+### 4. V2, V3 e Loop de Revisão Adversarial (Delegação: Agente Jefferson)
 
 Com a opção escolhida pelo usuário:
 
@@ -74,7 +74,7 @@ Com a opção escolhida pelo usuário:
   3. O ciclo se repete — sem limite de rodadas — até que o `jefferson` emita **STATUS: APROVADO**.
 - **Uma rodada de ajustes NÃO basta.** A `stephanie` não pode declarar o plano pronto por conta própria; o plano só é considerado concluído quando a última versão auditada tiver veredito **APROVADO**.
 
-### 4. Apresentação e Aprovação do Plano (Usuário)
+### 5. Apresentação e Aprovação do Plano (Usuário)
 
 Com o `PLANO.md` (V3) **aprovado pelo Jefferson** (veredito **STATUS: APROVADO** na última rodada do loop adversarial):
 
@@ -83,7 +83,7 @@ Com o `PLANO.md` (V3) **aprovado pelo Jefferson** (veredito **STATUS: APROVADO**
 3. O plano só avança pra execução após o usuário responder **"sim"** ou **"de acordo"** explicitamente.
 4. Se o usuário pedir ajustes, retorne pra Stephanie refinar e volte ao passo 1.
 
-### 5. Transição para Execução
+### 6. Transição para Execução
 
 Após aprovação explícita do usuário:
 
@@ -99,20 +99,20 @@ Apesar da delegação ocorrer autonomamente entre os subagentes, o avanço entre
 ```mermaid
 graph TD
     Start([Início / NOVA-TAREFA]) --> Limpeza[0. Limpeza de Terreno]
-    Limpeza --> Setup[0.1 Setup: Worktree]
+    Limpeza --> Setup[1. Setup: Worktree]
     Setup --> Orquestrador[Orquestrador]
-    Orquestrador --> Barbara[1. PM: Barbara]
+    Orquestrador --> Barbara[2. PM: Barbara]
     Barbara -->|Ambiguidades?| User([Usuário])
     User -->|Respostas| Barbara
-    Barbara -->|Escopo Definido| Stephanie[2. Tech Lead: Stephanie]
+    Barbara -->|Escopo Definido| Stephanie[3. Tech Lead: Stephanie]
     Stephanie -->|Opções V1| User
     User -->|Escolhe Opção| Stephanie
-    Stephanie -->|Cria V2 e V3| Jefferson[3. QA/Riscos: Jefferson]
+    Stephanie -->|Cria V2 e V3| Jefferson[4. QA/Riscos: Jefferson]
     Jefferson -->|STATUS: REPROVADO| Stephanie
     Stephanie -.->|Refina Plano e Re-envia| Jefferson
     Jefferson -->|STATUS: APROVADO| User
-    User -->|Aprovação Explícita| Aelin[4. Aprovação]
-    Aelin -->|De Acordo| Exec[5. Execução: Aelin]
+    User -->|Aprovação Explícita| Aelin[5. Aprovação]
+    Aelin -->|De Acordo| Exec[6. Execução: Aelin]
 ```
 
 ## Rules
