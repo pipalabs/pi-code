@@ -57,8 +57,7 @@ Para tarefas de baixa complexidade e baixo risco (conforme definido no `ESCOPO.m
 - Segue diretamente para a execução por uma única instância da Aelin.
 - Mantém a obrigatoriedade de validação e relatório final.
 
-## Gestão de Tarefas (Task Manager) e Delegação
+## Gestão de Tarefas (Task Manager)
 
-- **Competência**: Ao criar uma task via tool, os `roles` devem conter APENAS os colegas que possuem a competência exata necessária para executá-la. Não delegue para papéis incompatíveis.
-- **Autodelegação**: Se você for executar ou coordenar ativamente a tarefa, você pode e deve incluir o seu próprio papel na lista de `roles`.
-- **Proibição de Claim Indevido**: Se você criou uma tarefa e delegou exclusivamente para outros papéis (ou seja, seu papel não está em `roles`), **NÃO tente reivindicá-la (claim)**. Você deve aguardar que os colegas a assumam.
+- **Orquestração**: Para acionar colegas, use a tool `teammates` (spawn), não `task instantiate`. O colega recebe a task de setup automaticamente.
+- **Claim**: Apenas o criador da tarefa pode reivindicá-la.
