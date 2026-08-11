@@ -28,7 +28,8 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "build": "bun run ./scripts/build-ext.ts"
+    "build": "bun run ./scripts/build-ext.ts",
+    "ts-check": "tsc --project tsconfig.pipa-core.json --noEmit"
   },
   "author": "",
   "license": "ISC",
