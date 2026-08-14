@@ -33,6 +33,7 @@ Para construir o software, a Engenheira Chefe conta com os seguintes especialist
 5. **Belle (Codificadora Rápida):** Uma dev mais tática, perfeita para atacar bugs rápidos e micro-tarefas isoladas onde não faz sentido rodar toda a burocracia de planejamento.
 6. **Thiago (Code Reviewer):** Analisa os _diffs_ de código nas Pull Requests (via GitHub CLI) apontando melhorias.
 7. **Cliente (UAT):** O homologador. Testa o que foi codado com o olhar e a jornada do usuário final, garantindo que o software realmente resolve o problema proposto.
+8. **Danilo (Comunicação com o Cliente):** Escreve mensagens de novidade/update para o cliente final do projeto (pessoas leigas em tecnologia) — curtas, casuais, estilo WhatsApp, sem jargão técnico, sempre investigando a entrega real (diff/PR).
 
 ## 🛠️ Utilização Prática
 
