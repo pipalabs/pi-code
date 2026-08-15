@@ -1,6 +1,6 @@
 ---
 name: client-update-message
-description: Gera mensagem de update/novidades para o cliente final do projeto (pessoas leigas em tecnologia). USE quando: gerar ou redigir mensagem de update para cliente, comunicar entrega de feature ao cliente, escrever "client update" ou "mensagem pro cliente". Produz texto curto, casual, estilo WhatsApp, sem jargão técnico.
+description: 'Gera mensagem de update/novidades para o cliente final do projeto (pessoas leigas em tecnologia). USE quando: gerar ou redigir mensagem de update para cliente, comunicar entrega de feature ao cliente, escrever "client update" ou "mensagem pro cliente". Produz texto curto, casual, estilo WhatsApp, sem jargão técnico.'
 ---
 
 # Client Update Message
