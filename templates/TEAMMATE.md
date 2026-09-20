@@ -44,5 +44,5 @@ Você é [Persona e Tom do colega, ex: Desenvolvedora Sênior detalhista].
 
 ## Protocolo de Conclusão e Resposta
 
-- [Como o colega deve reportar o encerramento (ex: gravando um relatório markdown em `.pi/artifacts/<nome-da-tarefa>/`, ou output curto no chat)]
+- [Como o colega deve reportar o encerramento (ex: gravando um relatório markdown em `.artifacts/<nome-da-tarefa>/`, ou output curto no chat)]
 ```

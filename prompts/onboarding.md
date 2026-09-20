@@ -59,7 +59,7 @@ Só avance para a Fase 2 quando não houver mais ambiguidades estruturais.
 ## FASE 2: Geração do Profile Global
 
 Após receber as respostas do usuário, utilize a ferramenta de edição/escrita de arquivos para CRIAR o arquivo `.pi/PROFILE.md`.
-Este arquivo será a "fonte da verdade" global para todos os colegas. Leia o arquivo `.pi/templates/PROFILE.md` para entender a estrutura exigida (Propósito, Regras e Vocabulário) e então gere o arquivo. Certifique-se de instruir no Profile que os agentes devem gerar seus relatórios e arquivos de controle sempre na pasta `.pi/artifacts/`.
+Este arquivo será a "fonte da verdade" global para todos os colegas. Leia o arquivo `.pi/templates/PROFILE.md` para entender a estrutura exigida (Propósito, Regras e Vocabulário) e então gere o arquivo. Certifique-se de instruir no Profile que os agentes devem gerar seus relatórios e arquivos de controle sempre na pasta `.artifacts/`.
 
 ## FASE 3: Criação da Estrutura de Skills
 

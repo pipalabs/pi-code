@@ -22,7 +22,7 @@ O arquivo `.pi/PROFILE.md` deve ditar o comportamento global da Pipa e ser exaus
 
 - [Padrões do projeto mapeados na entrevista]
 - [Restrições tecnológicas, ferramentas obrigatórias]
-- **Diretório de Artefatos:** Todo plano, relatório ou rascunho gerado pelos agentes DEVE ser salvo estritamente dentro da pasta `.pi/artifacts/` (nunca soltos na raiz ou em pastas do usuário, a não ser que seja código do projeto em si).
+- **Diretório de Artefatos:** Todo plano, relatório ou rascunho gerado pelos agentes DEVE ser salvo estritamente dentro da pasta `.artifacts/` (nunca soltos na raiz ou em pastas do usuário, a não ser que seja código do projeto em si).
 
 ## Ferramentas Disponíveis
 

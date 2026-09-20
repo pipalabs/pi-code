@@ -1,6 +1,6 @@
 {
   "name": "@aelinrezende/pipa",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "private": false,
   "type": "module",
   "description": "Pi package que carrega a extensão Pipa",
@@ -21,6 +21,9 @@
     "skills": [
       "./skills"
     ],
+    "prompts": [
+      "./prompts"
+    ],
     "packages": [
       "npm:@juicesharp/rpiv-ask-user-question",
       "npm:@dietrichgebert/ponytail"
@@ -32,16 +35,16 @@
     "ts-check": "tsc --project tsconfig.pipa-core.json --noEmit"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "node-notifier": "^10.0.1",
     "get-windows": "^9.3.0"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@google/genai",
-      "protobufjs",
-      "get-windows"
-    ]
-  }
+  "trustedDependencies": [
+    "@google/genai",
+    "protobufjs",
+    "get-windows",
+    "esbuild"
+  ],
+  "packageManager": "bun@1.3.14"
 }
