@@ -4,7 +4,7 @@ O `pi-code` é um pacote de distribuição focado em **Engenharia de Software**,
 
 Este pacote não é focado em desenhar produtos no papel (para isso, use o `pi-discovery`), mas sim em **escrever código, refatorar sistemas, criar arquiteturas limpas e garantir a qualidade técnica** do software que está sendo construído.
 
-## 📦 Instalação
+## 📦 Installation
 
 Adicione o pacote nas configurações do seu Pi (`settings.json` ou `package.json`):
 
