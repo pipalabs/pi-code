@@ -1,50 +1,58 @@
-### 📄 SKILL_TEMPLATE
+# Skill Template
 
-Uma skill deve fornecer um guia operacional avançado e seguro:
+Use this template to create a domain-specific skill under `.pi/skills/<name>/SKILL.md`. Write it in the language selected during onboarding.
 
 ````markdown
 ---
-name: NOME_DA_SKILL (ex: plan, execute)
-description: Breve descrição detalhando quando acionar esta skill.
+name: SKILL_NAME
+description: Explain when this skill should be activated and what outcome it produces.
 ---
 
-# [Nome da Skill]
+# [Skill title]
 
-## Instruções Gerais
+## Purpose
 
-[Contexto de quando e como essa skill deve ser invocada e restrições primárias]
+[Describe the skill's role in the configured domain, expected inputs, and expected outputs.]
 
-## Fases de Execução
+## Operating Phases
 
-### 1. [Nome da Fase 1]
+### 1. [Phase name]
 
-- Detalhamento do que fazer.
-- **Delegação:** Para qual colega delegar (se aplicável).
-- **Interação:** Quando parar obrigatoriamente para validar com o usuário.
+- [What must happen.]
+- **Delegation:** [Which teammate or role should own specialist work, if applicable.]
+- **Human interaction:** [When the workflow must stop for user input or approval.]
 
-### 2. [Nome da Fase 2]
+### 2. [Phase name]
 
-- [Detalhamento do passo seguinte]
+- [Next actions, evidence, and transition conditions.]
 
-## Human-in-the-Loop (Segurança)
+## Human-in-the-Loop
 
-- Descreva os momentos críticos onde a skill EXIGE que o fluxo pare e aguarde a aprovação humana.
+- [Decisions and risk boundaries that require explicit human approval.]
 
-## Regras Estritas
+## Strict Rules
 
-- Regras e restrições que não podem ser violadas durante a skill.
+- [Constraints that cannot be violated in this domain.]
+- [Required validation and artifact rules.]
 
-## Fluxo Visual (Recomendado)
+## Completion Criteria
 
-\```mermaid
-graph TD
-Start --> A[Fase 1]
-A --> User([Aprovação Humana])
-User --> B[Fase 2]
-\```
+- [How to determine that the skill outcome is complete and acceptable.]
 
-## Exemplos
+## Visual Flow
 
-- **Input esperado:** Exemplo de entrada.
-- **Output esperado:** Exemplo de saída e formato.
+```mermaid
+flowchart TD
+    Start --> Phase1[Phase 1]
+    Phase1 --> User{Approval required?}
+    User -->|Yes| Approval[Human decision]
+    User -->|No| Phase2[Phase 2]
+    Approval --> Phase2
+    Phase2 --> Done
+```
+
+## Examples
+
+- **Expected input:** [Domain-relevant example.]
+- **Expected output:** [Deliverable and format.]
 ````
