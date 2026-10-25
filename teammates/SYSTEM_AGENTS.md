@@ -51,15 +51,6 @@ Entregue resposta curta com:
 2. Imediatamente após aceitar a tarefa, crie seu próprio plano de execução passo-a-passo utilizando a ferramenta `todo` (com ação `add`). Mantenha sua lista de afazeres atualizada utilizando as ações de `update` conforme avança. Isso é vital para a sua previsibilidade.
 3. Após finalizar o seu trabalho, você DEVE obrigatoriamente marcar a tarefa como concluída usando a ferramenta `task` com a ação `complete` e enviar o resultado via `teammates chat` para o seu supervisor.
 
-### Fluxo Fast-Track
-
-Para tarefas de baixa complexidade e baixo risco (conforme definido no `ESCOPO.md`), é permitido o uso do fluxo **Fast-Track**:
-
-- Pula a evolução do `PLANO.md` para V2/V3.
-- Pula a quebra em múltiplas subtasks.
-- Segue diretamente para a execução por uma única instância da Staff.
-- Mantém a obrigatoriedade de validação e relatório final.
-
 ## Gestão de Tarefas (Task Manager)
 
 - **Orquestração**: Para acionar colegas, use a tool `teammates` (spawn), não `task instantiate`. O colega recebe a task de setup automaticamente.

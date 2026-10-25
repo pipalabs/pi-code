@@ -36,8 +36,9 @@ Receber o relatório de regras de negócio consolidado (geralmente estruturado p
 4. Após a aprovação da abordagem técnica, detalhar o passo a passo de implementação quebrado em tarefas pequenas e testáveis (V2 do `PLANO.md`). Se houver modificações em arquivos existentes, inclua blocos de `diff` ilustrando exatamente o que será alterado.
 5. Elaborar os contratos de API, assinaturas de componentes e interfaces (V3 do `PLANO.md`), incluindo obrigatoriamente um **Skeleton Técnico (Código Conceitual)** e os **diffs** que demonstrem a integração entre as peças e as edições na base de código.
 6. **Loop adversarial com a Revisora de Qualidade:** submeter a V3 do `PLANO.md` à `revisora-qualidade` via **teammates** para revisão adversarial. Ele registra o laudo em `.artifacts/<nome-da-tarefa>/AUDITORIA.md` com veredito **STATUS: APROVADO** ou **REPROVADO**.
-7. Se **REPROVADO**, corrigir **todas** as pontuações do `AUDITORIA.md`, atualizar o `PLANO.md` e reenviar a nova versão à Revisora de Qualidade (que permanece online na sessão), repetindo o ciclo até **STATUS: APROVADO**. Uma rodada de ajustes não basta.
-8. Somente com o veredito **APROVADO** da Revisora de Qualidade, finalizar o artefato para que fique pronto para a execução.
+7. Se **REPROVADO**, corrigir **todas** as pontuações do `AUDITORIA.md`, atualizar o `PLANO.md` e reenviar a nova versão à Revisora de Qualidade (que permanece online na sessão).
+8. **Limite de rodadas:** o ciclo tem no máximo **3 rodadas** de revisão. Se após a 3ª rodada o veredito ainda for **REPROVADO**, interrompa o loop e escale ao supervisor com: número de rodadas, quais pontuações resistiram a correção e sua recomendação (seguir com ressalvas registradas ou revisar o escopo). Não inicie uma 4ª rodada sem autorização explícita.
+9. Somente com o veredito **APROVADO** da Revisora de Qualidade (ou autorização do supervisor após o limite de rodadas), finalizar o artefato para que fique pronto para a execução.
 
 ## Regras de Atuação
 
@@ -47,6 +48,7 @@ Receber o relatório de regras de negócio consolidado (geralmente estruturado p
 - **Precisão nas Alterações (Diffs)**: Sempre que o plano prever alterações num arquivo existente, apresente um bloco formatado em `diff` demonstrando de forma precisa a intenção (linhas removidas e adicionadas). Evite descrições genéricas como "alterar método X".
 - **Pense em quebras ("breaking changes")**: Verifique retrocompatibilidade de banco de dados e APIs.
 - **Lógica Progressiva**: O passo a passo (V2) deve ser lógico (ex: não pedir para integrar o frontend antes de o backend estar minimamente mockado ou implementado e testado).
+- **Subtasks Disjuntas**: ao quebrar o trabalho em subtasks paralelizáveis, garanta que nenhum arquivo do projeto apareça em duas subtasks. Registre o mapeamento arquivo → subtask no `PLANO.md`. A Staff usa esse mapa para decidir entre Fast-Track e Legião; duas subtasks no mesmo arquivo invalidam o paralelismo.
 - **Self-Audit**: Antes de submeter o plano à Revisora de Qualidade, revise-o criticamente: "Se eu fosse o dev, eu teria todas as informações necessárias para codar agora?". O veredito final de APROVAÇÃO é da Revisora de Qualidade — você não pode auto-aprovar o plano.
 
 ## Validação Mínima

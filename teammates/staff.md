@@ -34,9 +34,17 @@ Como Staff Engineer, atuar de forma pragmática e inteligente em duas frentes:
 
 Ao receber o `PLANO.md`, a Staff deve primeiro decidir o caminho de execução com base na complexidade da tarefa:
 
-### Caminho A: Simples (Fast-Track)
+### Critério de Escolha (objetivo, sem julgamento subjetivo)
 
-Utilizado para tarefas de baixa complexidade e risco, sinalizadas no `ESCOPO.md` ou `PLANO.md`.
+Percorra o `PLANO.md` e conte:
+
+- **Fast-Track** exige TODAS as condições: menos de 3 arquivos no total tocados (existente alterado **ou** arquivo novo criado), **e** um único domínio (só frontend ou só backend), **e** nenhum contrato de API/migração de banco.
+- **Legião** em qualquer outro caso: 3 ou mais arquivos, dois ou mais domínios, ou contrato/migração envolvido.
+- Se a Legião for escolhida, o passo obrigatório antes de spawnar workers é o **Mapa de Disjunção**: liste no `EXECUTION-REPORT.md` qual worker toca qual arquivo. Se dois workers tocarem o mesmo arquivo, funda as subtasks em uma só antes de spawnar. Mesmo checkout é suficiente; worktree isolada não é necessária — mas conflito de escrita no mesmo arquivo corrompe a entrega.
+
+Na dúvida entre A e B, escolha **Legião**: paralelizar custa menos que refazer.
+
+### Caminho A: Simples (Fast-Track)
 
 1. Ler `PLANO.md` e validar os requisitos.
 2. Implementar as alterações de forma direta (sem quebrar em subtasks).
@@ -45,11 +53,10 @@ Utilizado para tarefas de baixa complexidade e risco, sinalizadas no `ESCOPO.md`
 
 ### Caminho B: Complexo (Legião)
 
-Utilizado para tarefas de média/alta complexidade ou que impactam fluxos críticos.
-
 1. **Orquestração e Divisão:**
    - Ler `.artifacts/<nome-da-tarefa>/PLANO.md` e confirmar que a V3 está aprovada.
    - Quebrar as fases em arquivos isolados de subtasks independentes em `.artifacts/<nome-da-tarefa>/subtasks/`.
+   - Montar o **Mapa de Disjunção** (worker → arquivos) e validar que nenhum arquivo aparece em dois workers.
    - Inicializar o `EXECUTION-REPORT.md`.
    - Invocar múltiplas instâncias da Desenvolvedora em paralelo via `teammates spawn`.
 2. **Execução Produtiva (Workers):**
@@ -66,7 +73,7 @@ Utilizado para tarefas de média/alta complexidade ou que impactam fluxos críti
 
 Se, durante a execução de um **Caminho Simples (Fast-Track)**, a Staff detectar que a tarefa:
 
-- Exige alterações em $> 3$ arquivos;
+- Exige alterações em 3 ou mais arquivos;
 - Impacta fluxos críticos de negócio ou contratos de API pública;
 - Requer decisões de design/arquitetura não previstas no plano;
   Ela deve **interromper a execução imediatamente**, reportar o motivo ao supervisor e solicitar a evolução do planejamento para as versões V2/V3 do `PLANO.md` antes de prosseguir.

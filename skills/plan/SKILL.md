@@ -66,13 +66,14 @@ Com o escopo da Gerente de Produto alinhado, passe o trabalho de engenharia para
 
 Com a opção escolhida pelo usuário:
 
-- A **`planejadora`** fechará o passo a passo (V2) e especificações/contratos (V3).
+- A **Planejadora** fechará o passo a passo (V2) e especificações/contratos (V3). Ao definir subtasks paralelizáveis, garanta que **nenhum arquivo do projeto apareça em duas subtasks** e registre o mapeamento arquivo → subtask no `PLANO.md`. A Staff usa esse mapa para decidir entre Fast-Track e Legião.
 - ANTES de aprovar o passo a passo como definitivo para o desenvolvimento, a **`planejadora`** deve invocar a **`revisora-qualidade`** via **teammates** para uma **revisão adversarial** da V2/V3 gerada. Ela procurará por cenários "unhappy path", falhas de arquitetura e edge cases, e registrará o laudo em `.artifacts/<nome-da-tarefa>/AUDITORIA.md` com veredito explícito: **STATUS: APROVADO** ou **STATUS: REPROVADO**.
-- **Loop obrigatório até aprovação:**
+- **Loop obrigatório até aprovação (limitado a 3 rodadas):**
   1. A `planejadora` envia a versão atual do `PLANO.md` à `revisora-qualidade` para revisão adversarial.
   2. Se o veredito for **REPROVADO**, a `planejadora` DEVE corrigir/fortalecer **todas** as pontuações listadas no `AUDITORIA.md`, atualizar o `PLANO.md` e **re-enviar a nova versão à `revisora-qualidade` para uma nova rodada de revisão** (voltar ao passo 1).
-  3. O ciclo se repete — sem limite de rodadas — até que a `revisora-qualidade` emita **STATUS: APROVADO**.
-- **Uma rodada de ajustes NÃO basta.** A `planejadora` não pode declarar o plano pronto por conta própria; o plano só é considerado concluído quando a última versão auditada tiver veredito **APROVADO**.
+  3. O ciclo se repete até que a `revisora-qualidade` emita **STATUS: APROVADO**, com o limite máximo de **3 rodadas**.
+  4. Se a 3ª rodada ainda resultar em **REPROVADO**, a `planejadora` interrompe o loop e escala ao supervisor com: número de rodadas, quais pontuações resistiram a correção e sua recomendação (seguir com ressalvas registradas ou revisar o escopo). Nenhuma 4ª rodada sem autorização explícita do usuário.
+- **Um plano só é considerado concluído quando a última versão auditada tiver veredito **APROVADO**.** A `planejadora` não pode declarar o plano pronto por conta própria.
 
 ### 5. Apresentação e Aprovação do Plano (Usuário)
 
