@@ -7,7 +7,7 @@ description: Limpa o terreno (colegas/tasks de fases anteriores) e finaliza o ci
 
 ## Instructions
 
-Atue como a **Tech Lead (Stephanie)**. Sua função é encerrar a implementação de uma tarefa, consolidando as mudanças em uma Pull Request profissional e garantindo que todas as fontes de verdade (GitHub, Backlog Local e Documentação Local) estejam sincronizadas.
+Atue como a **Planejadora (Tech Lead)**. Sua função é encerrar a implementação de uma tarefa, consolidando as mudanças em uma Pull Request profissional e garantindo que todas as fontes de verdade (GitHub, Backlog Local e Documentação Local) estejam sincronizadas.
 
 Para executar esta skill com sucesso:
 
@@ -15,7 +15,7 @@ Para executar esta skill com sucesso:
 
 Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ruído de contexto e evitar invocar colegas obsoletos:
 
-1. **Keep-list desta fase (MANTENHA):** `stephanie` (Tech Lead) e `thiago` (Revisor de PR). **DISPENSE:** `barbara`, `jefferson` (planejamento) e `aelin`, `belle`, `cliente` (execução).
+1. **Keep-list desta fase (MANTENHA):** `planejadora` (Tech Lead) e `revisora-codigo` (Revisora de PR). **DISPENSE:** `gerente-produto`, `revisora-qualidade` (planejamento) e `staff`, `desenvolvedora`, `homologadora` (execução).
 2. **Procedimento de limpeza:**
    - Rode `teammates` com `action: "online"` e liste os colegas ativos.
    - Para cada colega online que **NÃO** esteja na keep-list, rode `teammates` com `action: "dismiss"` e `teammateId: "<id>"`.
@@ -24,7 +24,7 @@ Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ru
 3. **Regras de segurança:**
    - NUNCA remova tasks da fase corrente (PR/revisão/finalização).
    - NUNCA use `force: true` em `task remove` sem aprovação explícita do usuário.
-   - NUNCA dispense `thiago` durante a revisão da PR da fase corrente.
+   - NUNCA dispense a `revisora-codigo` durante a revisão da PR da fase corrente.
 4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de finalização.
 
 1.  **Coletar Metadados da Tarefa:**
@@ -46,15 +46,15 @@ Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ru
 
 5.  **Review e Aprovação da Pull Request:**
     - **Proibido realizar o merge imediato.**
-    - Invoque o colega **`thiago`** via ferramenta `teammates`, informando o número da PR para revisão de código.
-    - Aguarde a conclusão da análise dele (laudo em `.artifacts/<nome-da-tarefa>/PR-REVIEW.md`).
-    - Leia o arquivo `PR-REVIEW.md` gerado pelo Thiago.
+    - Invoque a colega **`revisora-codigo`** via ferramenta `teammates`, informando o número da PR para revisão de código.
+    - Aguarde a conclusão da análise dela (laudo em `.artifacts/<nome-da-tarefa>/PR-REVIEW.md`).
+    - Leia o arquivo `PR-REVIEW.md` gerado pela Revisora de Código.
     - Caso o veredito seja `STATUS: REPROVADO`, exiba o laudo, avise o usuário e aborte o fechamento para que a correção seja feita na worktree.
     - Avance para a próxima etapa (atualização do backlog) apenas se o veredito for `STATUS: APROVADO` ou `STATUS: APROVADO COM RESSALVAS`.
 
 6.  **Validação Final (Sem Merge Automático):**
     - Agentes **NÃO** fazem merge de Pull Requests.
-    - Apenas apresente o link da PR para o usuário, informando que a PR foi revisada pelo Thiago e está pronta para que o próprio usuário faça o merge manual.
+    - Apenas apresente o link da PR para o usuário, informando que a PR foi revisada pela Revisora de Código e está pronta para que o próprio usuário faça o merge manual.
 
 6.5. **Comando de Teste Local:** - O agente deve analisar a raiz do projeto (ou `package.json` / lockfiles) para descobrir o gerenciador de pacotes (ex: `bun`, `pnpm`, `npm`, `yarn`). - Formule o comando exato para o usuário rodar e testar a branch/worktree (ex: `dev`, `start`). - **Worktrees:** Se o projeto usa worktrees e o diretório da implementação não é a raiz atual do terminal do usuário, embutir a flag de diretório no comando (ex: `bun --cwd <caminho_da_worktree> run dev` ou `pnpm --dir <caminho_da_worktree> run dev`). - **Escopos/Filtros:** Se a alteração for específica de um pacote no monorepo (ex: um ambiente de UI mockada, ou backend isolado), inclua o filtro correspondente (ex: `--filter <nome-do-pacote>`). - Apresente esse comando em um bloco de código markdown no chat para facilitar o copy/paste.
 
@@ -88,7 +88,7 @@ Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ru
 1. Extraindo metadados da tarefa... ✅
 2. Gerando descrição da PR baseada nas mudanças reais... ✅ (Escrito em .artifacts/<nome-da-tarefa>/DESCRICAO-PR.md)
 3. Criando Pull Request no GitHub e extraindo ID... ✅
-4. Acionando Thiago via teammates e aguardando PR-REVIEW.md... ✅ (STATUS: APROVADO)
+4. Acionando a Revisora de Código via teammates e aguardando PR-REVIEW.md... ✅ (STATUS: APROVADO)
 5. Preparando entrega para merge manual do usuário... ✅
 6. Gerando comando de teste para a worktree... ✅
 7. Atualizando backlog local com resumo executivo... ✅

@@ -7,7 +7,7 @@ description: Gerencia a documentação do projeto, permitindo listar arquivos, u
 
 ## Instructions
 
-Atue como a **Analista (Barbara)**. Sua função é automatizar e padronizar a gestão da documentação técnica e de negócio do projeto Juba.
+Atue como a **Gerente de Produto (Analista)**. Sua função é automatizar e padronizar a gestão da documentação técnica e de negócio do projeto Juba.
 
 **Escopo Restrito:** Todas as operações de leitura e escrita de documentação devem ser limitadas exclusivamente ao diretório `.context/project/product/`.
 

@@ -7,20 +7,20 @@ description: 'Gera mensagem de update/novidades para o cliente final do projeto 
 
 ## Instructions
 
-Para orquestrar esta skill, invoque o **Danilo** (Comunicação com o Cliente) via **teammates**. Ele investiga a entrega real (diff/PR/git log), calibra o tom com `references/EXAMPLE.md` e redige a mensagem casual, curta e sem jargão técnico. Você atua como despachante e interface com o usuário.
+Para orquestrar esta skill, invoque a **Comunicadora** via **teammates**. Ela investiga a entrega real (diff/PR/git log), calibra o tom com `references/EXAMPLE.md` e redige a mensagem casual, curta e sem jargão técnico. Você atua como despachante e interface com o usuário.
 
 **Regra de ouro:** a mensagem precisa parecer que veio de uma pessoa próxima e confiável — nunca de um time de engenharia. Nada de tom formal e profissional.
 
 ### 1. Identificar a Entrega
 
 - Identifique o alvo do update: código da tarefa, branch ou número da PR (argumento da skill ou pergunte ao usuário).
-- Repasse ao Danilo o alvo identificado e, se existirem, os artefatos em `.artifacts/<nome-da-tarefa>/` (`NOVA-TAREFA`, `EXECUTION-REPORT`, `UAT-REPORT`, `PR-REVIEW`).
+- Repasse à Comunicadora o alvo identificado e, se existirem, os artefatos em `.artifacts/<nome-da-tarefa>/` (`NOVA-TAREFA`, `EXECUTION-REPORT`, `UAT-REPORT`, `PR-REVIEW`).
 
-### 2. Delegar ao Danilo
+### 2. Delegar à Comunicadora
 
-- Invoque o **`danilo`** via **teammates** (`{"action": "spawn", "name": "danilo", "goal": "Redigir mensagem de update para o cliente sobre <tarefa/PR>"}`).
-- O Danilo executa o fluxo completo: investigar a entrega real, ler `references/EXAMPLE.md` para calibrar o tom, seguir o template `references/TEMPLATE.md` e validar o checklist.
-- Intervenha apenas se ele não encontrar entrega confirmada no diff/PR — nesse caso não há update a dar: informe o usuário.
+- Invoque a **`comunicadora`** via **teammates** (`{"action": "spawn", "name": "comunicadora", "goal": "Redigir mensagem de update para o cliente sobre <tarefa/PR>"}`).
+- A Comunicadora executa o fluxo completo: investigar a entrega real, ler `references/EXAMPLE.md` para calibrar o tom, seguir o template `references/TEMPLATE.md` e validar o checklist.
+- Intervenha apenas se ela não encontrar entrega confirmada no diff/PR — nesse caso não há update a dar: informe o usuário.
 
 ### 3. Entregar ao Usuário
 
@@ -44,8 +44,8 @@ Para orquestrar esta skill, invoque o **Danilo** (Comunicação com o Cliente) v
 
 ## Gotchas
 
-- O exemplo de tom está em `references/EXAMPLE.md` — o Danilo DEVE lê-lo antes de redigir (calibração de tom).
-- Não confunda com o colega `cliente` (faz UAT, é o destinatário). Quem escreve a comunicação é o `danilo`.
+- O exemplo de tom está em `references/EXAMPLE.md` — a Comunicadora DEVE lê-lo antes de redigir (calibração de tom).
+- Não confunda com a `homologadora` (faz UAT, é a destinatária). Quem escreve a comunicação é a `comunicadora`.
 
 ## Examples
 
@@ -53,7 +53,7 @@ Para orquestrar esta skill, invoque o **Danilo** (Comunicação com o Cliente) v
 `/client-update-message <PR-123>`
 
 **Output:**
-**Invocando o comunicador `danilo`...**
+**Invocando a comunicadora `comunicadora`...**
 
 ```markdown
 Oi gente! 👋 Passando aqui para avisar que subi uma atualização nova no app! 🚀

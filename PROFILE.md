@@ -24,5 +24,5 @@ O que os agentes DEVEM EVITAR a todo custo:
 - Proibido pular checagens de validação de input nos contratos de entrada da API.
 
 ## Dicionário Ubíquo (Termos do Domínio)
-- **Squad / Colegas**: Subagentes especialistas em desenvolvimento (ex: Aelin, Thiago, Barbara).
+- **Squad / Colegas**: Subagentes especialistas em desenvolvimento (ex: Staff, Revisora de Código, Gerente de Produto).
 - **Clean Code**: Código que minimiza carga cognitiva, priorizando legibilidade extrema em detrimento de "otimizações prematuras".

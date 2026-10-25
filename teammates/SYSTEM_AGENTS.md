@@ -57,7 +57,7 @@ Para tarefas de baixa complexidade e baixo risco (conforme definido no `ESCOPO.m
 
 - Pula a evolução do `PLANO.md` para V2/V3.
 - Pula a quebra em múltiplas subtasks.
-- Segue diretamente para a execução por uma única instância da Aelin.
+- Segue diretamente para a execução por uma única instância da Staff.
 - Mantém a obrigatoriedade de validação e relatório final.
 
 ## Gestão de Tarefas (Task Manager)

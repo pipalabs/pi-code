@@ -1,13 +1,13 @@
 ---
 name: execute
-description: Limpa o terreno (colegas/tasks de fases anteriores) e inicia a execução técnica de uma tarefa já planejada, delegando a codificação para a agente Aelin e garantindo que o plano aprovado seja implementado de forma incremental e validada.
+description: Limpa o terreno (colegas/tasks de fases anteriores) e inicia a execução técnica de uma tarefa já planejada, delegando a codificação para a agente Staff e garantindo que o plano aprovado seja implementado de forma incremental e validada.
 ---
 
 # Executar Tarefa
 
 ## Instructions
 
-Para orquestrar esta skill, invoque a **Engenheira de Software (Aelin)**. Sua função é garantir que o trabalho codificado saia do papel e siga rigorosamente o `.artifacts/<nome-da-tarefa>/PLANO.md` elaborado. Ela será responsável por executar e, no final, orquestrar a validação (UAT) com o cliente.
+Para orquestrar esta skill, invoque a **Staff (Engenheira de Software)**. Sua função é garantir que o trabalho codificado saia do papel e siga rigorosamente o `.artifacts/<nome-da-tarefa>/PLANO.md` elaborado. Ela será responsável por executar e, no final, orquestrar a validação (UAT) com a Homologadora.
 
 Para executar esta skill com sucesso:
 
@@ -17,7 +17,7 @@ Para executar esta skill com sucesso:
 
 Antes de iniciar a execução, elimine o estado herdado de fases anteriores para reduzir ruído de contexto e evitar invocar colegas obsoletos:
 
-1. **Keep-list desta fase (MANTENHA):** `aelin` (Engenheira), `belle` (Legião) e `cliente` (UAT). **DISPENSE:** `barbara`, `jefferson`, `stephanie` (planejamento) e `thiago` (a `aelin` o invoca sob demanda se precisar de code review).
+1. **Keep-list desta fase (MANTENHA):** `staff` (Engenheira Executora), `desenvolvedora` (Legião) e `homologadora` (UAT). **DISPENSE:** `gerente-produto`, `revisora-qualidade`, `planejadora` (planejamento) e `revisora-codigo` (a `staff` a invoca sob demanda se precisar de code review).
 2. **Procedimento de limpeza:**
    - Rode `teammates` com `action: "online"` e liste os colegas ativos.
    - Para cada colega online que **NÃO** esteja na keep-list, rode `teammates` com `action: "dismiss"` e `teammateId: "<id>"`.
@@ -26,7 +26,7 @@ Antes de iniciar a execução, elimine o estado herdado de fases anteriores para
 3. **Regras de segurança:**
    - NUNCA remova tasks da fase corrente (subtasks de codificação).
    - NUNCA use `force: true` em `task remove` sem aprovação explícita do usuário.
-   - NUNCA dispense a `aelin` se ela já estiver executando a fase corrente.
+   - NUNCA dispense a `staff` se ela já estiver executando a fase corrente.
 4. **Verificação:** confirme com `teammates online` que só restaram colegas da keep-list e com `task list` que só restaram tasks de execução.
 
 ### 1. Validação de Pré-requisitos
@@ -35,45 +35,45 @@ Antes de iniciar a execução, elimine o estado herdado de fases anteriores para
 - Confirme se o ambiente já foi preparado (worktree/branch isolada, conforme etapa de Setup incluída no `plan`).
 - Sem plano aprovado, recuse o início e oriente o uso da skill `plan`.
 
-### 2. Início da Execução (Agente Aelin)
+### 2. Início da Execução (Agente Staff)
 
-- invoque a **`aelin`** via **teammates** repassando todas as regras estritas de execução abaixo.
+- invoque a **`staff`** via **teammates** repassando todas as regras estritas de execução abaixo.
 - Forneça o `PLANO.md` e instrua-a a iniciar a implementação.
-- A `aelin` decidirá autonomamente entre o **Fast-Track** (execução direta) ou a **Legião** (delegação para a Belle), conforme definido em sua persona.
-- Em ambos os casos, a `aelin` é responsável por inicializar e manter atualizado o `EXECUTION-REPORT.md` para garantir a rastreabilidade total.
+- A `staff` decidirá autonomamente entre o **Fast-Track** (execução direta) ou a **Legião** (delegação para a Desenvolvedora), conforme definido em sua persona.
+- Em ambos os casos, a `staff` é responsável por inicializar e manter atualizado o `EXECUTION-REPORT.md` para garantir a rastreabilidade total.
 
 ### 3. Supervisão e Monitoramento
 
-- No **Fast-Track**, a `aelin` executará a tarefa integralmente.
-- Na **Legião**, a `aelin` atuará como orquestradora, delegando subtasks para a **`belle`** via `teammates spawn` e consolidando os resultados.
+- No **Fast-Track**, a `staff` executará a tarefa integralmente.
+- Na **Legião**, a `staff` atuará como orquestradora, delegando subtasks para a **`desenvolvedora`** via `teammates spawn` e consolidando os resultados.
 - Seu papel agora é aguardar o reporte completo: monitore a evolução através do `EXECUTION-REPORT.md`.
-- Intervenha apenas se a `aelin` relatar impedimentos técnicos, conflitos de arquitetura ou se a qualidade das entregas da Belle for insuficiente.
+- Intervenha apenas se a `staff` relatar impedimentos técnicos, conflitos de arquitetura ou se a qualidade das entregas da Desenvolvedora for insuficiente.
 - Exija a execução e aprovação em testes estáticos. Para projetos frontend, certifique-se que ela rodou `npm run lint`, `npm run ts-check` e `npm run format-check`. Para projetos backend, certifique-se que ela fez o build da aplicação para confirmar que está tudo ok e compilando.
-- Aguarde a confirmação da `aelin` de que a implementação técnica foi concluída e validada (build/lint/ts-check/testes passaram).
+- Aguarde a confirmação da `staff` de que a implementação técnica foi concluída e validada (build/lint/ts-check/testes passaram).
 
-### 4. Validação do Cliente Final (Agente Usuario / UAT)
+### 4. Validação do Cliente Final (Agente Homologadora / UAT)
 
-- Quando todas as múltiplas execuções das `aelin`s terminarem seu trabalho técnico sem erros de lint/testes, introduza a etapa de homologação (UAT).
-- A **Aelin** deve invocar o **`cliente`** via **teammates**. Ela deve passar a ele o `EXECUTION-REPORT.md`, os principais arquivos desenvolvidos e a `NOVA-TAREFA.*.md` original.
-- O Agente Usuario simulará o comportamento da interface/produto entregue para validar se a promessa foi cumprida sob a ótica de usabilidade e comportamento, emitindo um laudo crítico de aprovação ou repúdio de UX/Fluxo.
-- Se o `cliente` reprovar por algum edge case prático, retorne as observações paras as Engs `aelin` consertarem.
+- Quando todas as múltiplas execuções das `staff`s terminarem seu trabalho técnico sem erros de lint/testes, introduza a etapa de homologação (UAT).
+- A **Staff** deve invocar a **`homologadora`** via **teammates**. Ela deve passar a ela o `EXECUTION-REPORT.md`, os principais arquivos desenvolvidos e a `NOVA-TAREFA.*.md` original.
+- A Homologadora simulará o comportamento da interface/produto entregue para validar se a promessa foi cumprida sob a ótica de usabilidade e comportamento, emitindo um laudo crítico de aprovação ou repúdio de UX/Fluxo.
+- Se a `homologadora` reprovar por algum edge case prático, retorne as observações paras as `staff`s consertarem.
 
 ### 5. Conclusão
 
-- Com o endosso final do **`cliente`**:
+- Com o endosso final da **`homologadora`**:
   - Exiba o `EXECUTION-REPORT.md` finalizado e o Veredito do UAT.
   - Recomende seguir com o encerramento da tarefa (ex: `finish` para abrir Pull Request).
 
 ## Human-in-the-Loop e Segurança
 
-A execução terminará com o UAT do Cliente. Vocês podem e devem abrir a "Pull Request", mas a responsabilidade de realizar o "Merge" definitivo não é de vocês de forma automática. Ao receber o laudo final aprovado e a PR aberta, mostre o sumário ao usuário e **aguarde a permissão expressa dele** para fechar a tarefa e efetuar o merge definitivo.
+A execução terminará com o UAT da Homologadora. Vocês podem e devem abrir a "Pull Request", mas a responsabilidade de realizar o "Merge" definitivo não é de vocês de forma automática. Ao receber o laudo final aprovado e a PR aberta, mostre o sumário ao usuário e **aguarde a permissão expressa dele** para fechar a tarefa e efetuar o merge definitivo.
 
 ## Rules
 
-- **Não implemente sozinho:** Delegue a execução para a Aelin e supervisione o progresso via artefatos de report.
-- **Paralelismo Seguro:** Confie na Aelin para orquestrar a Legião de Belles, garantindo que as subtasks sejam independentes.
-- **Validação Técnica Rigorosa:** Garanta que a Aelin comprove a execução dos testes estáticos (lint, ts-check, format-check) no frontend e o sucesso do build no backend.
-- **Garantia de UAT:** Você só pode considerar a execução encerrada depois que o `cliente` rodar sua homologação (Laudo de Aceite) sobre o código gerado.
+- **Não implemente sozinho:** Delegue a execução para a Staff e supervisione o progresso via artefatos de report.
+- **Paralelismo Seguro:** Confie na Staff para orquestrar a Legião de Desenvolvedoras, garantindo que as subtasks sejam independentes.
+- **Validação Técnica Rigorosa:** Garanta que a Staff comprove a execução dos testes estáticos (lint, ts-check, format-check) no frontend e o sucesso do build no backend.
+- **Garantia de UAT:** Você só pode considerar a execução encerrada depois que a `homologadora` rodar sua homologação (Laudo de Aceite) sobre o código gerado.
 
 ## Examples
 
@@ -84,11 +84,11 @@ A execução terminará com o UAT do Cliente. Vocês podem e devem abrir a "Pull
 **Validando artefatos de planejamento...**
 Plano técnico V3 validado.
 
-**Iniciando codificação: Chamando agente `aelin`...**
-_Aelin: "Fase 1 iniciada..."_
-_Aelin: "Fase 1 concluída sem erros de Typescript/Linter."_
+**Iniciando codificação: Chamando agente `staff`...**
+_Staff: "Fase 1 iniciada..."_
+_Staff: "Fase 1 concluída sem erros de Typescript/Linter."_
 
-_(Aguardando Aelin seguir pelas demais fases)_
+_(Aguardando Staff seguir pelas demais fases)_
 
 **Ao terminar:**
 _Execução finalizada com sucesso! Todas as validações passaram. Próximo passo: PR._
