@@ -31,7 +31,7 @@ Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ru
     - Leia `PLANO.md` e `NOVA-TAREFA.*.md` para extrair o código da tarefa (ex: "JUBA-41") e o título original da tarefa.
 
 2.  **Gerar Descrição da PR:**
-    - Utilize o template em `.claude/DESCRICAO-PR.template.md`.
+    - Se existir um template de descrição de PR no projeto (procure em `.pi/templates/` ou `.claude/`), use-o. Se não existir, escreva a descrição livremente seguindo o padrão das PRs anteriores do repositório (`gh pr list --state all --limit 5`).
     - Analise as mudanças reais no código (comparando a worktree atual com a branch de base, ex: `dev`).
     - Escreva a descrição final no arquivo `.artifacts/<nome-da-tarefa>/DESCRICAO-PR.md`.
 
@@ -61,12 +61,12 @@ Antes de finalizar, elimine o estado herdado de fases anteriores para reduzir ru
 7.  **Atualização do Backlog Local:**
     - Leia o arquivo `NOVA-TAREFA.*.md`.
     - Crie um resumo enxuto e de alto nível da implementação, escrito de forma a ser compreensível tanto para desenvolvedores quanto para PMs não técnicos.
-    - Atualize o item correspondente no backlog local utilizando a tool `backlog` com as actions `update-frontmatter` (alterando o campo `status` para `done`) e `update-body` (inserindo esse resumo, `mode: "append"`), para documentar o que foi efetivamente entregue. Não edite `backlog.json` diretamente — use exclusivamente a tool `backlog`.
+    - Atualize o item correspondente no backlog local usando a tool `backlog`: primeiro `action: "select"` com o código da tarefa para obter o `code` do item; depois `action: "update-frontmatter"` com `code`, `field: "status"` e `value: "done"`; por fim `action: "update-body"` com `code`, `mode: "append"` e o resumo em `value`. Não edite `backlog.json` diretamente — use exclusivamente a tool `backlog`.
 
 8.  **Atualização de Documentação Local (FINALIZAÇÃO):**
     - Analise a implementação realizada e identifique quais partes da documentação em `.context/project/product/` são afetadas.
     - **Se a documentação existir:** Compare a implementação atual com o conteúdo do arquivo e atualize-o para refletir as novas funcionalidades, alterações de contrato de API ou mudanças de comportamento.
-    - **Se a documentação não existir:** Crie um novo arquivo `.md` em `./context/project/product/` seguindo o padrão de nomenclatura e estrutura dos documentos existentes no módulo.
+    - **Se a documentação não existir:** Crie um novo arquivo `.md` em `.context/project/product/` seguindo o padrão de nomenclatura e estrutura dos documentos existentes no módulo.
     - **Atenção à Nomenclatura de Pastas:** É terminantemente proibido usar formato `slug` em novos diretórios. Use sempre o padrão numérico e Sentence case (ex: `01 - Nova pasta`).
     - Garanta que a documentação seja técnica, concisa e útil para outros desenvolvedores.
     - **Nota:** Esta documentação é mantida localmente para contexto do agente e não deve ser commitada no repositório.

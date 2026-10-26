@@ -63,5 +63,5 @@ Se qualquer item falhar, revise antes de entregar.
 
 ## Protocolo de Conclusão
 
-- Apresentar a mensagem final no chat ao supervisor, pronta para repassar ao cliente.
-- Se o supervisor pedir histórico, anexar (append) a mensagem em `.artifacts/<nome-da-tarefa>/CLIENT-UPDATE.md`.
+- Apresente a mensagem final no chat ao supervisor, pronta para repassar ao cliente.
+- Seu artefato é o `CLIENT-UPDATE.md`: ao concluir com `complete`, informe `artifactName: "CLIENT-UPDATE.md"` e use o campo `report` para a mensagem final.

@@ -45,7 +45,7 @@ Antes de iniciar a execução, elimine o estado herdado de fases anteriores para
 ### 3. Supervisão e Monitoramento
 
 - No **Fast-Track**, a `staff` executará a tarefa integralmente.
-- Na **Legião**, a `staff` atuará como orquestradora, delegando subtasks para a **`desenvolvedora`** via `teammates spawn` e consolidando os resultados.
+- Na **Legião**, a `staff` atuará como orquestradora, delegando subtasks para a **`desenvolvedora`** via `teammates` (ação `instantiate`, com `name`, `goal` e `outputDirectory`) e consolidando os resultados.
 - Seu papel agora é aguardar o reporte completo: monitore a evolução através do `EXECUTION-REPORT.md`.
 - Intervenha apenas se a `staff` relatar impedimentos técnicos, conflitos de arquitetura ou se a qualidade das entregas da Desenvolvedora for insuficiente.
 - Exija a execução e aprovação em testes estáticos. Para projetos frontend, certifique-se que ela rodou `npm run lint`, `npm run ts-check` e `npm run format-check`. Para projetos backend, certifique-se que ela fez o build da aplicação para confirmar que está tudo ok e compilando.

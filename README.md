@@ -1,13 +1,13 @@
 # pi-code
 
-O `pi-code` é um pacote de distribuição focado em **Engenharia de Software**, **Clean Code** e **Desenvolvimento Ágil**. Ele injeta a inteligência e o rigor técnico de engenharia no [Pipa Core](https://github.com/aelinrezende/pipa), transformando a sua orquestradora genérica em um time de desenvolvimento completo.
+`pi-code` is a distribution package focused on **Software Engineering**, **Clean Code** and **Agile Development**. It injects engineering intelligence and technical rigor into [Pipa Core](https://github.com/aelinrezende/pipa), turning your generic orchestrator into a complete development team.
 
-Este pacote não é focado em desenhar produtos no papel (para isso, use o `pi-discovery`), mas sim em **escrever código, refatorar sistemas, criar arquiteturas limpas e garantir a qualidade técnica** do software que está sendo construído.
+This package is not about designing products on paper (for that, use `pi-discovery`), but about **writing code, refactoring systems, building clean architectures and guaranteeing the technical quality** of the software being built.
 
 It extends Pi with structured task execution, decentralized teammates, persistent
 project planning, knowledge management, permission guards, and context hygiene.
 
-Adicione o pacote nas configurações do seu Pi (`settings.json` ou `package.json`):
+Add the package to your Pi configuration (`settings.json` or `package.json`):
 
 ```json
 "packages": [
@@ -15,31 +15,46 @@ Adicione o pacote nas configurações do seu Pi (`settings.json` ou `package.jso
 ]
 ```
 
-## 🚀 Como Funciona
+## 🚀 How It Works
 
-Ao ser carregado, a arquitetura base da Pipa (Pipa Core) detecta este pacote e configura o ambiente local (`.pi/`) com as regras de domínio exclusivas para a área de Engenharia e traz um Squad de Desenvolvimento maduro e pronto para atuar.
+When loaded, Pipa Core's base architecture detects this package and configures the local environment (`.pi/`) with domain rules exclusive to Engineering, bringing a mature Development Squad ready to operate.
 
-### 👑 A Liderança (Engenheira Chefe)
+### 👑 The Leadership (Chief Engineer)
 
-A Pipa incorpora a persona da **Engenheira Chefe**. Ela dita as regras do jogo: rigor com os Padrões de Código (`CODE-STANDARDS.md`), aplicação de princípios como _Early Return_ (Fail Fast), obrigatoriedade de testes unitários e tipagem estrita (TypeScript sem `any`). A Pipa coordena o fluxo para garantir que a arquitetura se mantenha sólida a cada entrega.
+Pipa takes on the **Chief Engineer** persona. She sets the rules of the game: strict adherence to Code Standards (`CODE-STANDARDS.md`), principles such as _Early Return_ (Fail Fast), mandatory unit tests and strict typing (TypeScript without `any`). Pipa coordinates the flow to keep the architecture solid on every delivery.
 
-### 🤝 O Squad de Engenharia (Teammates)
+### 🤝 The Engineering Squad (Teammates)
 
-Para construir o software, a Engenheira Chefe conta com os seguintes especialistas:
+To build software, the Chief Engineer relies on the following specialists:
 
-1. **Gerente de Produto:** Levanta o escopo inicial, entende a dor do usuário, resolve ambiguidades e define as regras de negócio antes que uma única linha de código seja escrita.
-2. **Planejadora (Tech Lead):** Pega as regras de negócio e elabora o plano técnico de execução (o `PLANO.md`), traduzindo o "o que fazer" no "como fazer".
-3. **Revisora de Qualidade:** Analisa o plano da Planejadora de forma adversarial e levanta questionamentos não previstos e cenários de borda (_edge cases_). A Planejadora refina o plano em rodadas até a Revisora de Qualidade emitir o veredito **APROVADO** — só então o plano segue para o código.
-4. **Staff (Engenheira Executora):** A desenvolvedora principal. Pega o plano técnico e codifica a solução de forma robusta, incremental e validada por testes.
-5. **Desenvolvedora:** Uma dev mais tática, perfeita para atacar bugs rápidos e micro-tarefas isoladas onde não faz sentido rodar toda a burocracia de planejamento.
-6. **Revisora de Código:** Analisa os _diffs_ de código nas Pull Requests (via GitHub CLI) apontando melhorias.
-7. **Homologadora (UAT):** Testa o que foi codado com o olhar e a jornada do usuário final, garantindo que o software realmente resolve o problema proposto.
-8. **Comunicadora:** Escreve mensagens de novidade/update para o cliente final do projeto (pessoas leigas em tecnologia) — curtas, casuais, estilo WhatsApp, sem jargão técnico, sempre investigando a entrega real (diff/PR).
+1. **Product Manager** (`gerente-produto`): Gathers the initial scope, understands the user's pain, resolves ambiguities and defines business rules before a single line of code is written.
+2. **Planner (Tech Lead)** (`planejadora`): Takes the business rules and produces the technical execution plan (`PLANO.md`), translating "what to do" into "how to do it".
+3. **Quality Reviewer** (`revisora-qualidade`): Analyzes the Planner's plan adversarially and raises unanticipated questions and edge cases. The Planner refines the plan until the Quality Reviewer emits an **APPROVED** verdict — only then does the plan move to code. The cycle is capped at **3 rounds**; if the limit is reached without approval, the case escalates to the user.
+4. **Staff (Execution Engineer)** (`staff`): The lead developer. Takes the technical plan and codes the solution in a robust, incremental and test-validated way. Chooses between **Fast-Track** (direct execution) and **Legião** (parallelism) by objective criteria, never by judging complexity.
+5. **Developer** (`desenvolvedora`): A more tactical dev, ideal for quick bugs and isolated micro-tasks where the full planning bureaucracy is not worth it.
+6. **Code Reviewer** (`revisora-codigo`): Reviews code diffs in Pull Requests (via GitHub CLI) and points out improvements.
+7. **Acceptance Tester (UAT)** (`homologadora`): Tests the coded work through the eyes and journey of the end user, making sure the software really solves the stated problem.
+8. **Communicator** (`comunicadora`): Writes update messages for the project's end client (non-technical people) — short, casual, WhatsApp-style, no jargon, always starting from the real delivery (diff/PR).
 
-## 🛠️ Utilização Prática
+## 🛠️ Practical Usage
 
-1. Inicie a sessão passando a demanda (novo _feature_ ou refatoração) para a Pipa.
-2. A Engenheira Chefe pode acionar a **Gerente de Produto** se precisar fechar o escopo de negócio e a **Planejadora** para documentar a solução técnica no `PLANO.md`.
-3. A **Revisora de Qualidade** revisa o plano de forma adversarial em rodadas — a Planejadora ajusta e reenvia a cada **REPROVADO** até a aprovação final — evitando bugs no futuro.
-4. A **Staff** ou a **Desenvolvedora** assumem o terminal para codar de verdade, dependendo do tamanho da mudança.
-5. Ao final, a **Revisora de Código** faz o review do código e a **Homologadora** chancela a entrega de valor. Tudo fica rastreado nos _artifacts_.
+1. Start the session by handing the demand (new _feature_ or refactor) to Pipa.
+2. The Chief Engineer may call the **Product Manager** (`gerente-produto`) to close business scope and the **Planner** (`planejadora`) to document the technical solution in `PLANO.md`.
+3. The **Quality Reviewer** (`revisora-qualidade`) reviews the plan adversarially — the Planner adjusts and resubmits on every **REJECTED**, capped at **3 rounds** before escalating to the user — preventing future bugs.
+4. The **Staff** (`staff`) takes the terminal. The path is chosen by objective criteria: **Fast-Track** when the plan touches fewer than 3 files, a single domain, and no API contract or database migration; anything else goes to **Legião**, where multiple **Developer** (`desenvolvedora`) instances run subtasks in parallel, each in its own subtask directory, under a **Disjunction Map** that prevents two workers from touching the same file.
+5. Finally, the **Code Reviewer** (`revisora-codigo`) reviews the code and the **Acceptance Tester** (`homologadora`) signs off on the value delivered. Everything is tracked in the _artifacts_.
+
+## 📦 Completion Artifacts
+
+Every agent concludes its task with the `complete` action and delivers a named artifact:
+
+| Agent                                   | Artifact                                                 |
+| --------------------------------------- | -------------------------------------------------------- |
+| Product Manager (`gerente-produto`)     | `ESCOPO.md`                                              |
+| Planner (`planejadora`)                 | `PLANO.md`                                               |
+| Quality Reviewer (`revisora-qualidade`) | `AUDITORIA.md` or `LAUDO.md`                             |
+| Staff (`staff`)                         | `EXECUTION-REPORT.md`                                    |
+| Developer (`desenvolvedora`)            | `EXECUTION-REPORT.md` (inside its own subtask directory) |
+| Acceptance Tester (`homologadora`)      | `UAT-REPORT.md`                                          |
+| Code Reviewer (`revisora-codigo`)       | `PR-REVIEW.md`                                           |
+| Communicator (`comunicadora`)           | `CLIENT-UPDATE.md`                                       |

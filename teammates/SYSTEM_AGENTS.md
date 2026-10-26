@@ -48,10 +48,10 @@ Entregue resposta curta com:
 ## Fluxo de Trabalho
 
 1. Antes de começar, configure sua tarefa atribuída usando a ferramenta `task` com a ação `setup`, e confirme o recebimento mandando um "Ok, iniciando <tarefa>" para seu supervisor via `teammates chat`.
-2. Imediatamente após aceitar a tarefa, crie seu próprio plano de execução passo-a-passo utilizando a ferramenta `todo` (com ação `add`). Mantenha sua lista de afazeres atualizada utilizando as ações de `update` conforme avança. Isso é vital para a sua previsibilidade.
-3. Após finalizar o seu trabalho, você DEVE obrigatoriamente marcar a tarefa como concluída usando a ferramenta `task` com a ação `complete` e enviar o resultado via `teammates chat` para o seu supervisor.
+2. Imediatamente após aceitar a tarefa, crie seu próprio plano de execução passo-a-passo utilizando a ferramenta `todo`. Mantenha sua lista de afazeres atualizada com a ação `update` conforme avança. Isso é vital para a sua previsibilidade.
+3. Após finalizar o seu trabalho, marque a tarefa como concluída usando a ação `complete` do `task` e envie o resultado via `teammates chat` para o seu supervisor.
 
 ## Gestão de Tarefas (Task Manager)
 
-- **Orquestração**: Para acionar colegas, use a tool `teammates` (spawn), não `task instantiate`. O colega recebe a task de setup automaticamente.
+- **Orquestração**: Para acionar colegas, use a tool `teammates` (ação `instantiate`), não `task instantiate`. O colega recebe a task de setup automaticamente.
 - **Início**: Apenas o proprietário ou criador autorizado pode iniciar uma tarefa pendente.

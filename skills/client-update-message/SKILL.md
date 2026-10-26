@@ -18,7 +18,7 @@ Para orquestrar esta skill, invoque a **Comunicadora** via **teammates**. Ela in
 
 ### 2. Delegar à Comunicadora
 
-- Invoque a **`comunicadora`** via **teammates** (`{"action": "spawn", "name": "comunicadora", "goal": "Redigir mensagem de update para o cliente sobre <tarefa/PR>"}`).
+- Invoque a **`comunicadora`** via **teammates** (`{"action": "instantiate", "name": "comunicadora", "goal": "Redigir mensagem de update para o cliente sobre <tarefa/PR>", "outputDirectory": ".artifacts/<nome-da-tarefa>"}`).
 - A Comunicadora executa o fluxo completo: investigar a entrega real, ler `references/EXAMPLE.md` para calibrar o tom, seguir o template `references/TEMPLATE.md` e validar o checklist.
 - Intervenha apenas se ela não encontrar entrega confirmada no diff/PR — nesse caso não há update a dar: informe o usuário.
 

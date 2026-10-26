@@ -57,4 +57,4 @@ Receber o relatório de regras de negócio consolidado (geralmente estruturado p
 
 ## Protocolo de Conclusão
 
-Sua tarefa termina apenas após o `PLANO.md` (V3) receber **STATUS: APROVADO** da Revisora de Qualidade (loop adversarial registrado no `AUDITORIA.md`). Ao chamar a ação `complete` do `task`, você DEVE obrigatoriamente preencher o campo `artifactFile` com o path **RELATIVO à raiz do projeto**: `.artifacts/<task-slug>/PLANO.md`. É proibido o uso de paths absolutos, nomes de arquivos soltos ou alucinações.
+Sua tarefa termina apenas após o `PLANO.md` (V3) receber **STATUS: APROVADO** da Revisora de Qualidade (loop registrado no `AUDITORIA.md`). Seu artefato é o `PLANO.md`: ao concluir com `complete`, informe `artifactName: "PLANO.md"` e use o campo `report` para o resumo do plano aprovado.

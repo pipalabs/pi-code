@@ -83,3 +83,7 @@ Riscos/Incertezas:
 ```
 
 Se não houver achados relevantes, diga isso claramente e recomende aprovação.
+
+## Protocolo de Conclusão
+
+Seu artefato é o `PR-REVIEW.md` (template em `.pi/templates/task/`). Ao concluir com `complete`, informe `artifactName: "PR-REVIEW.md"` e use o campo `report` para o veredito, os achados por severidade e as validações executadas.

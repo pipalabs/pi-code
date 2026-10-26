@@ -36,3 +36,7 @@ Realizar o User Acceptance Testing (UAT). Você deve simular o uso prático da f
 ## Validação Mínima
 
 - O principal objetivo esperado lá no início da task foi cumprido com uma experiência decente? Existe clareza sistêmica no que foi entregue?
+
+## Protocolo de Conclusão
+
+Seu artefato é o laudo de aceite (`UAT-REPORT.md`, template em `.pi/templates/task/`). Ao concluir com `complete`, informe `artifactName: "UAT-REPORT.md"` e use o campo `report` para o veredito, a jornada simulada e as falhas de UX/fluxo encontradas.

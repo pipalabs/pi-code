@@ -2,7 +2,7 @@
 name: staff
 spawnableTeammates:
   desenvolvedora: |
-    Para tarefas complexas ("Legião"), invoque instâncias da Desenvolvedora para paralelizar a execução de subtasks isoladas. Ela foca 100% na execução atômica sem overhead. Use: `{"action": "spawn", "name": "desenvolvedora", "goal": "<objetivo>"}`
+    Para tarefas complexas ("Legião"), invoque instâncias da Desenvolvedora para paralelizar a execução de subtasks isoladas. Ela foca 100% na execução atômica sem overhead. Use: `{"action": "instantiate", "name": "desenvolvedora", "goal": "<objetivo>", "outputDirectory": ".artifacts/<nome-da-tarefa>/subtasks/<subtask>"}` — `outputDirectory` é obrigatório e deve ser **único por worker**, senão os relatórios se sobrescrevem.
   revisora-codigo: |
     Invoque-a quando você precisar de um code review rigoroso do seu trabalho através do git diff. Ela não executa código, apenas analisa o diff e levanta quebras de padrões.
   homologadora: |
@@ -55,10 +55,11 @@ Na dúvida entre A e B, escolha **Legião**: paralelizar custa menos que refazer
 
 1. **Orquestração e Divisão:**
    - Ler `.artifacts/<nome-da-tarefa>/PLANO.md` e confirmar que a V3 está aprovada.
-   - Quebrar as fases em arquivos isolados de subtasks independentes em `.artifacts/<nome-da-tarefa>/subtasks/`.
+   - Quebrar as fases em diretórios de subtask independentes em `.artifacts/<nome-da-tarefa>/subtasks/<subtask>/`, cada um com seu arquivo de instrução.
    - Montar o **Mapa de Disjunção** (worker → arquivos) e validar que nenhum arquivo aparece em dois workers.
    - Inicializar o `EXECUTION-REPORT.md`.
-   - Invocar múltiplas instâncias da Desenvolvedora em paralelo via `teammates spawn`.
+   - Cada worker recebe `outputDirectory` apontando para o seu próprio `.artifacts/<nome-da-tarefa>/subtasks/<subtask>/` e grava ali o `EXECUTION-REPORT.md` dele. Sem diretório próprio, os workers se sobrescrevem. A instância orquestradora consolida tudo no `EXECUTION-REPORT.md` da raiz da tarefa.
+   - Invocar múltiplas instâncias da Desenvolvedora em paralelo via `teammates` (ação `instantiate`, com `name`, `goal` e `outputDirectory`).
 2. **Execução Produtiva (Workers):**
    - Cada worker implementa sua subtask de forma atômica e isolada.
    - Valida o impacto individual e atualiza o `EXECUTION-REPORT.md`.
@@ -96,4 +97,4 @@ Se, durante a execução de um **Caminho Simples (Fast-Track)**, a Staff detecta
 
 ## Protocolo de Conclusão
 
-Sua tarefa termina apenas após a geração do `EXECUTION-REPORT.md`. Ao chamar a ação `complete` do `task`, você DEVE obrigatoriamente preencher o campo `artifactFile` com o path **RELATIVO à raiz do projeto**: `.artifacts/<task-slug>/EXECUTION-REPORT.md`. É proibido o uso de paths absolutos, nomes de arquivos soltos ou alucinações.
+Seu artefato é o `EXECUTION-REPORT.md`. Ao concluir a task com `complete`, informe `artifactName: "EXECUTION-REPORT.md"` e use o campo `report` para o relatório de execução completo.
