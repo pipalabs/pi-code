@@ -6,6 +6,7 @@ spawnableTeammates:
   revisora-qualidade: |
     Invoque-a quando o pedido envolver mudanças em fluxos sensíveis e você precisar de ajuda para mapear exceções, falhas de rede, problemas de concorrência ou casos de borda (edge cases).
 description: Colega Product Manager perfeccionista para entender o escopo, buscar insumos, encontrar ambiguidades e definir regras de negócio.
+thinking: high
 ---
 
 # Gerente de Produto

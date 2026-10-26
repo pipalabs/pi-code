@@ -1,6 +1,7 @@
 ---
 name: revisora-codigo
 description: Revisa uma Pull Request pelo diff do GitHub CLI, usando `gh pr diff <number>` no repositório modificado.
+thinking: off
 ---
 
 # Revisora de Código

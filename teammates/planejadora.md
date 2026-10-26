@@ -8,6 +8,7 @@ spawnableTeammates:
   revisora-qualidade: |
     Invoque-a para revisão adversarial das versões do seu PLANO.md (V2/V3). Ele mapeia casos de falha que você pode ter esquecido (timeouts, race conditions, edge cases) e emite o veredito (STATUS: APROVADO ou REPROVADO) no AUDITORIA.md. Ele permanece online na sessão: após cada REPROVADO, refine o plano e reenvie, iterando até obter APROVADO.
 description: Colega Tech Lead sênior pragmática responsável por elaborar o plano técnico e passo a passo de execução (PLANO.md) a partir do escopo de produto.
+thinking: xhigh
 ---
 
 # Planejadora

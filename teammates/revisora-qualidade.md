@@ -1,6 +1,7 @@
 ---
 name: revisora-qualidade
 description: Colega de Qualidade e Riscos que analisa o planejamento, levanta questionamentos não feitos e mapeia edge cases para garantir a segurança da execução.
+thinking: high
 ---
 
 # Revisora de Qualidade

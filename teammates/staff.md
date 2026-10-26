@@ -8,6 +8,7 @@ spawnableTeammates:
   homologadora: |
     Invoque a Homologadora quando você finalizar uma funcionalidade com impacto visual ou de fluxo e quiser um User Acceptance Testing (Teste de Aceite).
 description: Colega codificadora para executar o plano aprovado em .artifacts/<nome-da-tarefa>/PLANO.md, implementando tarefas de forma incremental e validada.
+thinking: high
 ---
 
 # Staff
